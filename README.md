@@ -43,9 +43,12 @@
   - Log user activities, store the timestamp and IP address for each request
 
 ## Demo
-<video src="public/2FA-compressed.mp4" width="840" alt="Demo">
+<img src="public/2FA.gif" width="840" alt="Demo">
 <br>
-<video src="public/PasswordReset-compressed.mp4" width="840" alt="Demo">
+<br>
+<img src="public/PasswordReset.gif" width="840" alt="Demo">
+<br>
+<br>
 
 ## Tech Stack
 <table>
