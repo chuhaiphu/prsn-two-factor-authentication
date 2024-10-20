@@ -1,13 +1,13 @@
-import { Module } from '@nestjs/common';
-import { UserController } from './user.controller';
-import { UserService } from './user.service';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { MailerModule } from '@nestjs-modules/mailer';
-import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
-import { JwtModule } from '@nestjs/jwt';
-import { PassportModule } from '@nestjs/passport';
-import { JwtTokenStrategy } from 'src/_strategies/jwt.access-token.strategy';
-import { jwtConstants } from 'src/_constants/jwt.constant';
+import { Module } from '@nestjs/common'
+import { UserController } from './user.controller'
+import { UserService } from './user.service'
+import { PrismaService } from 'src/prisma/prisma.service'
+import { MailerModule } from '@nestjs-modules/mailer'
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter'
+import { JwtModule } from '@nestjs/jwt'
+import { PassportModule } from '@nestjs/passport'
+import { JwtTokenStrategy } from 'src/_strategies/jwt.access-token.strategy'
+import { jwtConstants } from 'src/_constants/jwt.constant'
 
 @Module({
   imports: [
