@@ -3,6 +3,7 @@ import { Observable } from 'rxjs'
 import { tap } from 'rxjs/operators'
 import { PrismaService } from '../prisma/prisma.service'
 import { Reflector } from '@nestjs/core'
+import { v4 as uuidv4 } from 'uuid'
 
 @Injectable()
 export class ActivityLogInterceptor implements NestInterceptor {
@@ -18,7 +19,7 @@ export class ActivityLogInterceptor implements NestInterceptor {
     if (!action) return next.handle();
 
     const request = context.switchToHttp().getRequest()
-    const userId = request.user?.id
+    const userId = request.user?.id || `anonymous-${uuidv4()}`
     const ipAddress = request.ip
 
     return next.handle().pipe(
@@ -27,9 +28,11 @@ export class ActivityLogInterceptor implements NestInterceptor {
           this.logger.log(`Logging activity: Action: ${action}, UserId: ${userId}, IP: ${ipAddress}`)
           this.prisma.activityLog.create({
             data: {
-              userId,
               action,
               ipAddress,
+              user: userId.startsWith('anonymous-') 
+                ? undefined 
+                : { connect: { id: userId } }
             },
           }).then(() => {
             this.logger.log('Activity log created successfully')

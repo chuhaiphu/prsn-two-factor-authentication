@@ -67,6 +67,11 @@ export class AuthService {
     }
   }
 
+  async generateTempToken(user: User) {
+    const payload = { sub: user.id, email: user.email, isTempToken: true }
+    return this.jwtService.sign(payload, { expiresIn: '5m', secret: jwtConstants.temp_token_secret })
+  }
+  
   async login2FA(tempToken: string, twoFACode: string) {
     const decoded = this.jwtService.verify(tempToken, { secret: jwtConstants.temp_token_secret })
     if (!decoded.isTempToken) {
@@ -97,7 +102,7 @@ export class AuthService {
   async setup2FA(userId: string) {
     const user = await this.prisma.user.findUnique({ where: { id: userId } });
     if (!user) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException('User not found')
     }
     const { otpauthUrl } = await this.generateTwoFactorAuthenticationSecret(user);
     const qrCodeDataUrl = await this.generateQrCodeDataURL(otpauthUrl);
@@ -116,11 +121,6 @@ export class AuthService {
 
   async generateQrCodeDataURL(otpAuthUrl: string) {
     return toDataURL(otpAuthUrl)
-  }
-
-  async generateTempToken(user: User) {
-    const payload = { sub: user.id, email: user.email, isTempToken: true };
-    return this.jwtService.sign(payload, { expiresIn: '5m', secret: jwtConstants.temp_token_secret });
   }
 
   // * save TOTP code to database

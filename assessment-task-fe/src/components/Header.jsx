@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -37,14 +38,14 @@ export default function Header() {
     <header className="bg-white">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex items-center gap-x-12">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               alt=""
               src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
               className="h-8 w-auto"
             />
-          </a>
+          </Link>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
               <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
@@ -65,11 +66,11 @@ export default function Header() {
         </div>
         <div className="hidden lg:flex">
           {isLoggedIn ? (
-            <button onClick={handleLogout} className="text-sm font-semibold leading-6 text-gray-900">
+            <button onClick={handleLogout} className="font-semibold leading-6 text-gray-900 px-4 py-2 text-xl">
               Log out <span aria-hidden="true">→</span>
             </button>
           ) : (
-            <button onClick={handleLogin} className="text-sm font-semibold leading-6 text-gray-900">
+            <button onClick={handleLogin} className="font-semibold leading-6 text-gray-900 px-4 py-2 text-xl">
               Log in <span aria-hidden="true">→</span>
             </button>
           )}

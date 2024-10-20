@@ -95,3 +95,21 @@ export const findUserById = async (id) => {
     throw error.response;
   }
 };
+
+export const forgotPasswordApi = async (email) => {
+  try {
+    const response = await api.post(`/user/forget-password?email=${email}`);
+    return response.data;
+  } catch (error) {
+    throw error.response;
+  }
+};
+
+export const resetPasswordApi = async (resetPasswordData) => {
+  try {
+    const response = await api.post('/user/reset-password', resetPasswordData);
+    return response.data;
+  } catch (error) {
+    throw error.response;
+  }
+};

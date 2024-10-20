@@ -13,40 +13,37 @@
     * Password will be securely stored using a hashed version
     * Returns a success message along with the new user's details (excluding password)
 
-- **User Login:**
+- **User Login (Passport):**
   - **Users log in by providing Email or Username and Password**
   - **If authentication is successful:**
     * Return a success message and a JWT (JSON Web Token) for authenticated requests
     * The token will be valid for a certain time (e.g., 24 hours)
     
-- **Authentication Middleware:**
+- **Authentication Middleware (@UseGuard + Passport AuthGuard):**
   - **Implement middleware to protect certain routes, allowing only authenticated users to access them**
   - **If an invalid or expired token is used, return an unauthorized error**
 
 
 ## Advanced Features
-- **Password Reset:**
+- **Password Reset (Nodemailer):**
   - Implement a password reset feature where users can request to reset their password using their email
-  - Send an email with a reset link. Allow the user to set a new password after clicking the reset link
+  - Send an email with a verification code. Allow the user to set a new password with that code in password reset page
 
-- **User Roles and Permissions:**
+- **User Roles and Permissions (@Roles + RolesGuard):**
   - Implement basic roles such as admin and user.
   - Certain routes will be accessible only to users with admin role
 
-- **Rate Limiting for Login:**
+- **Rate Limiting for Login (ThrottleModule):**
   - Add rate limiting to the login endpoint to prevent brute force attacks. E.g., allow only 5 login attempts per minute
 
-- **Two-Factor Authentication (2FA):**
+- **Two-Factor Authentication (AuthController and AuthService functions):**
   - Allow users to enable 2FA during login using a time-based one-time password (TOTP), like Google Authenticator
 
-- **Activity Logging:**
+- **Activity Logging (@ActivityLogInterceptor):**
   - Log user activities, store the timestamp and IP address for each request
-## Demo
 
-<img src="public/Demo 1.gif" width="840" alt="Demo GIF">
-<img src="public/Demo 3.gif" width="840" alt="Demo GIF">
-<img src="public/Demo 2.gif" width="840" alt="Demo GIF">
-<img src="public/Demo 4.gif" width="840" alt="Demo GIF">
+## Demo
+<img src="public/2FA-compressed.mov" width="840" alt="Demo GIF">
 
 ## Tech Stack
 <table>
@@ -82,8 +79,7 @@
 
 ### Prerequisites
 
-Here's what you need to be able to run Share Image:
-
+Here's what you need to be able to run this source:
 - Node.js (version >= 18)
 - MongoDB Cluster and Database (Create at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas))
 
@@ -132,7 +128,7 @@ $ yarn start:dev
 # production mode
 $ yarn start:prod
 ```
-For further information, after starting the project, please visit [backend-url]/swagger for API documentation.
+Please visit [localhost:8080]/swagger for full API documentation.
 
 ### 6. Playing with UI screens demo
 In frontend (fe) directory
