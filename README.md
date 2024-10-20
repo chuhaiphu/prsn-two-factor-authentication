@@ -27,17 +27,17 @@
 ## Advanced Features
 - **Password Reset (Nodemailer):**
   - Implement a password reset feature where users can request to reset their password using their email
-  - Send an email with a verification code. Allow the user to set a new password with that code in password reset page
+  - Send an email with a verification code. User will use it to set new password with code in password reset page
 
 - **User Roles and Permissions (@Roles + RolesGuard):**
   - Implement basic roles such as admin and user.
   - Certain routes will be accessible only to users with admin role
 
 - **Rate Limiting for Login (ThrottleModule):**
-  - Add rate limiting to the login endpoint to prevent brute force attacks. E.g., allow only 5 login attempts per minute
+  - Rate limiting for endpoints to prevent brute force attacks. E.g., allow only 5 login attempts per minute
 
 - **Two-Factor Authentication (AuthController and AuthService functions):**
-  - Allow users to enable 2FA during login using a time-based one-time password (TOTP), like Google Authenticator
+  - Allow users to enable 2FA during login using a time-based one-time password from Authenticator apps
 
 - **Activity Logging (@ActivityLogInterceptor):**
   - Log user activities, store the timestamp and IP address for each request
