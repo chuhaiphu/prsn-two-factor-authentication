@@ -43,7 +43,7 @@
   - Log user activities, store the timestamp and IP address for each request
 
 ## Demo
-<img src="public/2FA-compressed.mov" width="840" alt="Demo GIF">
+<img src="public/2FA-compressed.mp4" width="840" alt="Demo GIF">
 
 ## Tech Stack
 <table>
