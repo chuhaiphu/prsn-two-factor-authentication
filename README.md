@@ -27,7 +27,7 @@
 ## Advanced Features
 - **Password Reset (Nodemailer):**
   - Implement a password reset feature where users can request to reset their password using their email
-  - Send an email with a verification code. User will use it to set new password in password reset page
+  - Send an email with a verification code that expire after 15 minutes. User will use it to set new password in password reset page
 
 - **User Roles and Permissions (@Roles + RolesGuard):**
   - Implement basic roles such as admin and user.
