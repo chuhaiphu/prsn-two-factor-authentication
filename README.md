@@ -91,7 +91,7 @@ Here's what you need to be able to run this source:
 ### 1. Clone the repository
 
 ```shell
-git clone https://github.com/chuhaiphu/saigon-digital-assessment
+git clone https://github.com/chuhaiphu/saigon-digital-assessment.git
 ```
 
 ### 2. Install dependencies
